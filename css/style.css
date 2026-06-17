@@ -1,0 +1,47 @@
+/*小标题背景*/
+.resized-image {
+    width: 45%; /* 根据需要调整宽度 */
+    height: 45%; /* 根据需要调整高度 */
+    object-fit: contain; /* 保持图片比例，完整显示图片 */
+    z-index: 1;/* 确保图片在背景之上 */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+/*艾米案例图片引入*/
+/* 图片网格容器：三行两列 */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* 两列等宽 */
+    gap: 20px;                               /* 图片间距 */
+    margin: 30px auto;                       /* 上下间距30px，左右自动居中 */
+    width: 50%;                              /* 容器宽度为父容器宽度的60% */
+}
+
+/* 每个图片项 */
+.grid-item {
+    overflow: hidden;
+    border-radius: 16px;                     /* 圆角，可删除或调整 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 可选阴影 */
+    background: #f0f0f0;                     /* 加载占位背景 */
+}
+
+/* 图片自适应，保持比例且裁剪居中 */
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;                       /* 覆盖容器，保持比例 */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* 可选悬停效果 */
+.grid-item img:hover {
+    transform: scale(1.02);
+}
+
+/* 确保每个格子高度一致（固定或自动） */
+.grid-item {
+    aspect-ratio: 1 / 1;                    /* 宽高比 1:1，可修改 */
+}

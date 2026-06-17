@@ -1,0 +1,224 @@
+@charset "UTF-8";
+
+.main-text-care {
+  font-size: 18px;
+  color: #4a312c;
+  margin-bottom: 5px;
+  margin-left: 400px;
+  margin-right: 400px;
+  background-color: #ec81641c;
+  text-align: justify; /* 文本两端对齐 */
+  text-align-last: left; /* 最后一行左对齐 */
+  }
+.container {
+    position: relative;
+    font-size: 22px;
+    font-weight: 600;
+    color: #f5f5f5e1;
+    width:50%;
+}
+
+.container span {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    transform: skewY(-15deg);
+    transform-origin: left;
+}
+
+.container span:nth-child(even) {
+    transform: skewY(15deg);
+    transform-origin: right;
+}
+
+.container span::after {
+    position: absolute;
+    content: '';
+    width: 40px;
+    height: 40px;
+    left: 0;
+    top: 0;
+    background-color: #f6b6c6;
+    z-index: -1;
+}
+
+.container span:nth-child(even)::after {
+    background-color: #dd7a8a;
+}
+
+.container span::before {
+    position: absolute;
+    content: '';
+    width: 40px;
+    height: 40px;
+    left: 0;
+    top: 0;
+    background-color: #dd7a8a;
+    z-index: -2;
+    transform: skewY(15deg);
+    transform-origin: left;
+}
+
+.container span:nth-child(even)::before {
+    transform: skewY(-15deg);
+    transform-origin: right;
+}
+
+/* 鼠标移入时效果 */
+
+.container span.flat {
+    transform: skewY(0deg);
+}
+
+.container span.flat:nth-child(even) {
+    transform: skewY(0deg);
+}
+
+.container span.flat::before {
+    transform: skewY(0deg);
+}
+
+.container span.flat:nth-child(even)::before {
+    transform: skewY(0deg);
+}
+
+.container span.flat:nth-child(even)::after {
+    background-color: #f6b6c6;
+}
+
+/* 特别定义 */
+
+span.first::after {
+    background-color: #f6b6c6 !important;
+}
+
+
+.clear {
+clear: both;
+}
+.flourish-container {
+display: flex;
+align-items: center;
+margin-left: 27px;
+width: 93%;
+}
+.flourish-embed {
+flex: 1;
+}
+.text-container {
+flex: 1;
+margin-right: 0px;
+margin-left: 50px;
+}
+
+/* 添加一些样式，使奶茶名字显示在杯子内部 */
+#tea-bottle {
+position: relative;
+z-index: 1;
+}
+
+/* 显示功效的样式 */
+.effect-container {
+position: absolute;
+top: 0;
+left: 100%;
+margin-left: 10px;
+background-color: #f8d3a6; /* 功效背景颜色，可以根据需要调整 */
+padding: 8px;
+display: none;
+color: #4a312c ;
+border-radius: 8px;
+font-size: 14px; /* 调整字体大小，根据需要修改 */
+z-index: 2; /* 将效果容器置于顶层 */
+}
+.tea-name {
+text-shadow: 2px 2px 4px #f6b6c6f4; /* 添加阴影效果，可以根据需要修改 */
+}
+#hint-text {
+text-anchor: middle;
+font-size: 8px; /* 调整字体大小，根据需要修改 */
+fill: #4a312cac; /* 调整文字颜色，可以根据需要修改 */
+}
+.ps-text {
+text-anchor: middle;
+margin-left: 340px;
+font-size: 16px; /* 调整字体大小，根据需要修改 */
+fill: #4a312cac; /* 调整文字颜色，可以根据需要修改 */
+}
+/*情绪微博评论效果*/
+.image-group {
+display: flex;
+justify-content: space-evenly;
+width: 635px;
+}
+
+.image-container {
+width: 225px;
+height: 242px;
+margin-bottom: 20px;
+position: relative;
+perspective: 1000px;
+}
+
+.flip-container {
+width: 100%;
+height: 100%;
+position: relative;
+transform-style: preserve-3d;
+transform: rotateY(0deg);
+transition: transform 0.5s;
+}
+
+.flip-container:hover {
+transform: rotateY(-180deg);
+}
+
+.flipper {
+width: 100%;
+height: 100%;
+transform-style: preserve-3d;
+transform: rotateY(0deg);
+transition: transform 0.5s;
+}
+
+.image-container:hover .flipper {
+transform: rotateY(180deg);
+}
+
+.front,
+.back {
+width: 100%;
+height: 100%;
+position: absolute;
+backface-visibility: hidden;
+display: flex;
+flex-direction: column;
+justify-content: center;
+transform-origin: top;
+transform: rotateX(0deg);
+opacity: 1;
+transition: 0.5s;
+}
+
+.image-container:hover .front {
+transform: rotateX(90deg);
+opacity: 0;
+}
+
+.image-container:hover .back {
+transform: rotateX(0deg);
+opacity: 1;
+}
+
+.back {
+transform: rotateX(-90deg);
+}
+
+.image-container img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}

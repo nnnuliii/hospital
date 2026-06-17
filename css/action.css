@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+.circle-text {
+    display: flex;
+    position:relative;
+    font-size: 20px;
+    line-height: 36px;
+    margin: 30px auto;
+    width: calc(100% - 60px);
+    text-align:justify;
+}
+
+.circle-text span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    margin: -4px;
+}
+
+.circle-text span:nth-child(odd) {
+    background-color: #ec8164;
+    color: white;
+}
+
+.circle-text span:nth-child(even) {
+    background-color: #dd7a8a;
+    color: white;
+}
+
+/*如何养生gif*/
+.image-left {
+    float: left;
+    margin-right: 10px;
+    width: 35%;
+    height: 35%;
+}
+
+.image-right {
+    float: right;
+    margin-left: 30px;
+    width: 35%;
+    height: 35%;
+}
+/*引言打字机效果*/
+.intro-text {
+    font-size: 17px;
+    text-align: left !important;
+    margin-bottom: 2px;
+    white-space: pre-wrap; /* 允许换行 */
+    overflow: hidden;
+}

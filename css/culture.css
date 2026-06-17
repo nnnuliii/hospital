@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+.images-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative; /* 添加相对定位 */
+}
+
+.container-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 25%;
+    width: 50%;
+    height: 100%;
+    border: 3px solid #f7baba;
+    border-radius: 20px;
+    z-index: 1; /* 将矩形方框放在图片下方 */
+}
+
+.image-group {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.image-group img {
+    border-radius: 10px;
+    margin: auto;
+    transition: opacity 0.8s;
+}
+
+.img-direction {
+    max-width: 20%;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.text-hidden {
+    opacity: 0;
+}
+
+.text-visible {
+    opacity: 1;
+}

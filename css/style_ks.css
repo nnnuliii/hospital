@@ -1,0 +1,521 @@
+/*云南省和黑龙江等边境省份*/
+/* 卡片容器 */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* 卡片基本样式 */
+.card {
+    position: relative;
+    width: 280px;
+    height: 160px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+    transition: 0.5s;
+}
+
+/* 悬停时卡片高度增加足够容纳滑入的详情 */
+.card:hover {
+    height: 340px;            /* 给详情区域足够的空间 */
+}
+
+/* 图片框 */
+.imgBox {
+    position: absolute;
+    left: 50%;
+    top: -40px;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    transition: 0.5s;
+    z-index: 2;
+}
+
+.card:hover .imgBox {
+    width: 180px;
+    height: 180px;
+}
+
+.imgBox img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 内容容器 */
+.card .content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+/* 详情区域 - 初始完全隐藏在卡片底部下方 */
+.card .content .details {
+    padding: 15px 20px;
+    text-align: center;
+    width: 100%;
+    transition: 0.5s;
+    /* 关键：偏移量大于卡片高度，确保初始完全不可见 */
+    transform: translateY(120px);   /* 与卡片初始高度一致，完全推出视野 */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+/* 悬停时滑入，卡片已增高，有足够空间 */
+.card:hover .content .details {
+    transform: translateY(0);
+}
+
+/* 标题样式 - 确保颜色可见 */
+.card .content .details h2 {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #298EAF;               /* 深灰色，清晰可见 */
+    line-height: 1.3em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-family: 'FZBYFKSK';
+}
+
+.card .content .details h2 p {
+    font-size: 0.8em;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-weight: 800;
+    color: #298EAF;               /* 保证不透明度过低导致看不见 */
+    font-family: 'FZBYFKSK';
+    text-align: center;   /* 新增：使医院名称居中 */
+}
+
+/* 详细文字区域 */
+.card .content .details .data {
+    font-size: 0.8em;
+    line-height: 1.4;
+    color: #666;
+    text-align: center;
+    margin-top: 5px;
+    font-family: 'FZBYFKSK';
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .card {
+        width: 240px;
+        height: 140px;
+    }
+    .card:hover {
+        height: 310px;
+    }
+    .imgBox {
+        width: 100px;
+        height: 100px;
+        top: -30px;
+    }
+    .card:hover .imgBox {
+        width: 150px;
+        height: 150px;
+    }
+    .card .content .details {
+        padding: 12px 15px;
+        transform: translateY(140px);
+    }
+}
+
+@media (max-width: 550px) {
+    .cards {
+        gap: 15px;
+    }
+    .card {
+        width: 85vw;
+        max-width: 260px;
+    }
+}
+
+
+/*海南、广东、上海等医疗重点城市*/
+/* 科室名片容器 — 无背景色 */
+.dept-cards-wrapper {
+    width: 100%;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+.dept-cards-grid {
+    display: flex;
+    flex-direction: column;    /* 改为垂直排列 */
+    align-items: center;       /* 卡片水平居中 */
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* 卡片基础样式 */
+.dept-card {
+    width: 450px;
+    height: auto;             /* 自动撑开 */
+    min-height: 280px;        /* 最小高度，保持一致性 */
+    background: linear-gradient(135deg, #ffffff, #f5f7fa);
+    box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.35);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'FZBYFKSK';
+}
+
+.dept-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 28px 36px -14px rgba(0, 0, 0, 0.4);
+}
+
+.dept-card h1 {
+    text-align: center;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* 滑动侧边栏 */
+.dept-card .additional {
+    position: absolute;
+    width: 140px;
+    height: 100%;
+    background: linear-gradient(135deg, #2C7DA0, #61A5C2);
+    transition: width 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    overflow: hidden;
+    z-index: 2;
+    border-radius: 0 12px 12px 0;
+}
+
+/* 不同科室主题色（可选） */
+.dept-card.guangdong .additional {
+    background: linear-gradient(135deg, #298EAF, #90CDE2);
+}
+.dept-card.lecheng .additional {
+    background: linear-gradient(135deg, #298EAF, #90CDE2);
+}
+
+.dept-card:hover .additional {
+    width: 100%;
+    border-radius: 0 16px 16px 0;
+}
+
+/* 左侧图标区 */
+.dept-card .additional .user-card {
+    width: 140px;
+    height: 100%;
+    position: relative;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dept-card .additional .user-card::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10%;
+    right: 0;
+    height: 80%;
+    border-right: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.dept-card .additional .user-card .level,
+.dept-card .additional .user-card .points {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 0.25rem 1rem;
+    border-radius: 40px;
+    white-space: nowrap;
+    margin: 8px 0;
+    letter-spacing: 0.5px;
+}
+
+.dept-card .additional .user-card .level {
+    margin-top: 20px;
+}
+
+.dept-card .additional .user-card .points {
+    margin-bottom: 20px;
+}
+
+/* 图标容器 - 圆形背景 */
+.dept-card .additional .user-card .dept-icon {
+    width: 85px;
+    height: 85px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 12px 0;
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.dept-card .additional .user-card .dept-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 右侧悬浮详情区 */
+.dept-card .additional .more-info {
+    width: calc(100% - 140px);
+    float: left;
+    position: absolute;
+    left: 140px;
+    height: 100%;
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.dept-card .additional .more-info h1 {
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* ========== 关键修改：.info-list 两列布局 ========== */
+.dept-card .additional .more-info .info-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* 两列等宽 */
+    gap: 12px 16px;
+    margin-top: 8px;
+}
+
+.dept-card .additional .more-info .info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 10px;
+    border-radius: 40px;
+    backdrop-filter: blur(2px);
+    transition: background 0.2s;
+}
+
+.dept-card .additional .more-info .info-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.dept-card .additional .more-info .info-icon {
+    font-size: 1.3rem;
+    width: 32px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.dept-card .additional .more-info .info-content {
+    flex: 1;
+}
+
+.dept-card .additional .more-info .info-label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+}
+
+/* 正面默认显示区 */
+.dept-card .general {
+    width: 310px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    box-sizing: border-box;
+    padding: 1.4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(120deg, #fff, #fefdf8);
+}
+
+.dept-card .general h1 {
+    color: #1F5E7E;
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+    line-height: 1.3;
+    font-weight: bold;
+}
+
+.dept-card .general p {
+    color: #2c3e4e;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-top: 10px;        /* 确保没有额外的上边距 */
+    margin-bottom: 20px;
+}
+
+.dept-card .general .more {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.2rem;
+    font-size: 0.75rem;
+    color: #61A5C2;
+    font-weight: bold;
+    background: rgba(97, 165, 194, 0.15);
+    padding: 4px 12px;
+    border-radius: 50px;
+    transition: 0.2s;
+    cursor: default;
+}
+
+.dept-card .general .more:hover {
+    background: #61A5C2;
+    color: white;
+}
+
+/* 响应式：移动端时卡片高度自动，内边距微调 */
+@media (max-width: 550px) {
+    .dept-cards-grid {
+        gap: 1.5rem;
+    }
+    .dept-card {
+        width: 95vw;
+        height: auto;
+        min-height: 260px;
+    }
+    .dept-card .general {
+        width: 65%;
+        padding: 1rem;
+    }
+    .dept-card .general h1 {
+        font-size: 1.1rem;
+    }
+    .dept-card .general p {
+        font-size: 0.8rem;
+    }
+    .dept-card .additional .more-info {
+        padding: 0.8rem;
+    }
+    .dept-card .additional .more-info h1 {
+        font-size: 1.2rem;
+    }
+    /* 移动端两列布局仍然保留，但缩小间距 */
+    .dept-card .additional .more-info .info-list {
+        gap: 8px 12px;
+    }
+    .dept-card .additional .more-info .info-item {
+        padding: 4px 8px;
+    }
+    .dept-card .additional .more-info .info-icon {
+        font-size: 1rem;
+        width: 26px;
+    }
+    .dept-card .additional .more-info .info-label {
+        font-size: 0.75rem;
+    }
+    .dept-card .additional .user-card .dept-icon img {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* 针对高度不足时的滚动优化（保留样式） */
+.dept-card .additional .more-info::-webkit-scrollbar {
+    width: 4px;
+}
+.dept-card .additional .more-info::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
+.dept-card .additional .more-info::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.4);
+    border-radius: 4px;
+}
+
+/* ===== 上海卡片专用样式 ===== */
+
+/* 上海卡片主题色（可选） */
+.dept-card.shanghai .additional {
+    background: linear-gradient(135deg, #298EAF, #90CDE2);
+}
+
+/* 标题上下间距优化 */
+.dept-card.shanghai .additional .more-info h1 {
+    margin-top: 20px;
+    margin-bottom: 18px;
+}
+.dept-card.shanghai .additional .more-info h1:first-of-type {
+    margin-top: 8px;
+}
+
+/* 专科列表：单列，且子项宽度占满整行 */
+.dept-card.shanghai .additional .more-info .info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 8px;
+    /* 删除 align-items: flex-start，默认 stretch 使子项宽度 100% */
+}
+
+/* 专科项：占满整行宽度 */
+.dept-card.shanghai .additional .more-info .info-item {
+    width: 100%;               /* 改为 100%，占满父容器 */
+    display: flex;             /* 改为 flex，不是 inline-flex */
+    align-items: center;
+    gap: 14px;
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 40px;
+    backdrop-filter: blur(2px);
+    transition: background 0.2s;
+    box-sizing: border-box;    /* 确保内边距不导致溢出 */
+}
+
+/* 悬停效果 */
+.dept-card.shanghai .additional .more-info .info-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* 专科图标 */
+.dept-card.shanghai .additional .more-info .info-icon {
+    font-size: 1.3rem;
+    width: 36px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* 专科文字 */
+.dept-card.shanghai .additional .more-info .info-label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    word-break: break-word;
+    flex: 1;                  /* 可选：让文字区域自动占满剩余宽度 */
+}

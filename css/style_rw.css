@@ -1,0 +1,192 @@
+/* 人物讲述-留言板（主色 #90CDE2） */
+/*组件容器 */
+.patient-board {
+    width: 100vmin;
+	margin: -4% auto 0 auto;  /* 上边距 -4%，左右 auto */
+}
+
+/*全局标题样式（组件内h2）*/
+.patient-board h2 {
+    text-align: center;
+}
+
+/*团队列表容器*/
+.patient-board .team {
+    padding: 2em 0 2em 2.5em;
+    margin: 0;
+}
+
+/*单个成员卡片 .member*/
+.patient-board .member {
+    margin: 1.5em 0 0.5em;
+    padding: 0.73em;
+    background: linear-gradient(83deg, #90CDE2 0 97%, #fff0 calc(97% + 1px) 100%);
+    position: relative;
+    list-style: none;
+    display: inline-block;
+    transform: scale(0.85);
+    transition: all 0.3s ease;
+}
+
+/*偶数卡片的样式*/
+.patient-board .member:nth-of-type(even) {
+    text-align: right;
+    background: linear-gradient(-83deg, #90CDE2 0 97%, #fff0 calc(97% + 1px) 100%);
+}
+
+
+/*头像容器 .thumb*/
+.patient-board .thumb {
+    width: 13vmin;
+    height: 13vmin;
+    float: left;
+    margin-right: 1.25em;
+    background: linear-gradient(-86deg, #E2F2F8 0 70%, #90CDE2 0% 100%);
+    transform: rotate(-4deg);
+    transition: all 0.3s ease;
+    border-radius: 0.25em;
+    overflow: hidden;
+    margin-left: -3em;
+    padding: 0.5em;
+}
+
+/*偶数卡片内的头像布局*/
+.patient-board .member:nth-of-type(even) .thumb {
+    float: right;
+    margin-left: 2em;
+    margin-right: -3em;
+    transform: rotate(4deg);
+	background: linear-gradient(86deg, #E2F2F8 0 70%, #90CDE2 0% 100%); 
+	/* 固定角度 86deg，与奇数的 -86deg 对称 */
+}
+
+/*头像图片*/
+.patient-board .thumb img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.25em;
+    filter: grayscale(1);
+    background: #E2F2F8;
+}
+
+/*卡片悬停效果*/
+.patient-board .member:hover {
+    transform: scale(1);
+    transition: all 0.3s ease;
+    filter: drop-shadow(0px 20px 10px #0008);
+}
+
+/*悬停时头像的样式*/
+.patient-board .member:hover .thumb {
+    padding: 0.1em;
+    transition: all 0.3s ease;
+    transform: rotate(-1deg);
+    --deg: -89deg;
+}
+
+/*偶数卡片悬停时头像*/
+.patient-board .member:nth-of-type(even):hover .thumb {
+    --deg: 91deg;
+}
+
+/*悬停时头像图片去灰度*/
+.patient-board .member:hover .thumb img {
+    filter: none;
+    transition: all 0.3s ease;
+}
+
+/*描述文字区域*/
+.patient-board .description {
+    padding-top: 1vmin;
+}
+
+.patient-board .description p {
+    padding: 0 2em;
+    margin-bottom: 1em;
+    line-height: 2;      /* 行高建议用相对单位 */
+    font-size: 18px;       /* 修改此处 */
+}
+
+/*标题 <h3> (卡片内姓名/昵称)*/
+.patient-board h3 {
+    background: linear-gradient(182deg, #fff0 60%, #E2F2F8 0 100%);
+    display: inline;
+    transform: rotate(-2deg);
+    position: absolute;
+    margin: 0;
+    margin-top: -2.25em;
+    left: 9vmin;
+    padding: 0.5em 0.75em;
+    color: #90CDE2;
+    border-radius: 0.25em;
+    font-size: 1.35em;
+    transform-origin: left bottom;
+}
+
+/*偶数卡片内的标题*/
+.patient-board .member:nth-of-type(even) h3 {
+    left: inherit;
+    right: 9vmin;
+    transform: rotate(2deg);
+    transform-origin: right bottom;
+    background: linear-gradient(-182deg, #fff0 60%, #E2F2F8 0 100%);
+}
+
+/*悬停时标题变化*/
+.patient-board .member:hover h3 {
+    transition: all 0.3s ease;
+    transform: rotate(0deg);
+    background: linear-gradient(180deg, #fff0 59%, #E2F2F8 0 100%);
+}
+
+/*伪元素 :after 添加标签“患者自述”*/
+.patient-board .co-funder:after {
+    content: "患者自述";
+    font-size: 0.75em;
+    position: absolute;
+    top: -1.5em;
+    background: #90CDE2;
+    right: 4em;
+    transform: rotate(3deg);
+    padding: 0.35em 0.75em 0.5em;
+    border-radius: 0.25em;
+    color: #E2F2F8;
+    font-weight: bold;
+}
+
+/*偶数卡片标签位置*/
+.patient-board .co-funder:nth-of-type(even):after {
+    right: inherit;
+    left: 4em;
+    transform: rotate(-3deg);
+}
+
+/*描述中的链接样式*/
+.patient-board .description p a {
+    display: inline-block;
+    margin: 0.5em 0 0 0;
+    background: #E2F2F8;
+    color: #90CDE2;
+    padding: 0.1em 0.5em 0.35em;
+    border-radius: 0.5em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/*链接中的图片*/
+.patient-board .description p a:hover {
+    transition: all 0.3s ease;
+    color: #E2F2F8;
+    background: #90CDE2;
+    font-weight: bold;
+}
+
+.patient-board .description p a img {
+    float: left;
+    width: 22px;
+    filter: invert(1);
+    border-radius: 0.15em;
+    padding: 2px;
+    background: #fff;
+    margin-right: 2px;
+}

@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+#menu {
+    position: fixed;
+    top: 0;
+    height:45px;
+    margin: 0 auto; /* 水平居中 */
+    width: 100%;
+    z-index: 1000;
+  }/* 设置导航栏样式 */
+
+
+  #menu .navbar-collapse {
+    justify-content: flex-end; /* 将导航链接居右 */
+  }
+
+  .navbar {
+    background-color: #54AECF !important; /* 修改导航栏的背景颜色 */
+  }
+
+  .navbar-hidden {
+    display: none !important;
+  }
+
+  #menu a {
+    color: #E2F2F8;/* 正常状态下的颜色 */
+  }
+
+  #menu a:hover {
+    color: #90CDE2; /* 鼠标悬停状态下的颜色 */
+  }
+
+  #menu a:active {
+    color: #54AECF; /* 链接被点击时的颜色 */
+  }
+
+
+  #menu a {
+    font-size: 20px; /* 修改导航链接文字字号 */
+    font-weight: bold; /* 修改导航链接文字字重 */
+    text-decoration: none; /* 去除链接的下划线 */
+    margin-right: 30px; /* 设置导航链接之间的水平间距，根据需要调整值 */
+    font-family:'TrueType_2';
+  }
+
+  .container555 {
+    padding: 0px;
+    height: 1000px;
+  }
