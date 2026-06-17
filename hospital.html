@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="./image/web-icon.png" sizes="16x16">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-Lge2E2XotzMiwH69/MXB72yLpwyENMiOKX8zS8Qo7LDCvaBIWGL+GlRQEKIpYR04" crossorigin="anonymous"></script>
+        <script src="./echarts.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/v5/echarts.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script src="./js/danmaku-wall.js"></script>
+        <script src="./js/nav.js"></script>
+        <!-- 广东地图JS -->
+        <script src="https://cdn.jsdelivr.net/npm/echarts/map/js/province/guangdong.js"></script>
+        <script src="./js/guangdong.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="./css/animate.css">
+        <link rel="stylesheet" href="./css/economic.css">
+        <link rel="stylesheet" href="./css/culture.css">
+        <link rel="stylesheet" href="./css/action.css">
+        <link rel="stylesheet" href="css/style_haiwai.css">
+        <link rel="stylesheet" href="css/style_juanzhou.css">
+        <link rel="stylesheet" href="css/style_dengta.css">
+        <link rel="stylesheet" href="css/style_book.css">
+        <link rel="stylesheet" href="css/style_ks.css">
+        <link rel="stylesheet" href="css/style_rw.css">
+        <link rel="stylesheet" href="css/danmaku-wall.css">
+        <link rel="stylesheet" href="./css/nav_new.css">
+        
+      <style>
+        body {
+          padding: 0px;
+          background: url('./image/背景新.jpg') no-repeat center center fixed;
+          background-size: cover;
+        }
+
+        .allcontent{
+            display: none;
+        }
+
+        .imagestart{
+            background-image: url('./image/封面.png');
+            background-position: 0 0;
+            background-attachment: fixed;
+            background-size: cover;
+            height:800px;
+            width:100%;
+        }
+
+        .imageimport{
+            background-image: url('./image/引入.gif');
+            background-position: 0 0;
+            background-attachment: fixed;
+            background-size: cover;
+            height:1036px;
+            width:100%;
+        }
+
+        .imageending{
+            background-image: url('./image/结尾底图.png');
+            background-position: 0 0;
+            background-attachment: fixed;
+            background-size: cover;
+            height:1036px;
+            width:100%;
+        }
+
+        .imagetittle{
+            background-image: url('./image/文字底图.png');
+            background-position: 0 0;
+            background-attachment: fixed;
+            background-size: cover;
+            height:1036px;
+            width:100%;
+        }
+
+        /*文字段落*/
+        @font-face{
+            font-family: 'FZBYFKSK';
+            src: url(./font/FZBYFKSK.TTF);
+        }
+
+        @font-face{
+            font-family: 'YanShiChunFengKai';
+            src: url(./font/YanShiChunFengKai-2-1.ttf);
+        }
+        @font-face{
+            font-family: 'FZFengYKSJF_Zhong';
+            src: url(./font/FZFengYKSJF_Zhong.TTF);
+        }
+
+        p {
+        font-family: 'FZBYFKSK';
+        font-size: 18px;
+        width: calc(100% - 60px);
+        max-width: 700px;
+        margin: 30px auto;
+        text-align:justify;
+        line-height: 36px;
+        }
+        .note1{
+            font-family: 'FZBYFKSK';
+            font-size: 17px;
+            text-align: center;
+            font-weight: bold;
+            color:#298EAF;
+            margin-bottom: 5px;
+        }
+        .note2{
+            font-family: 'FZBYFKSK';
+            font-size: 13px;
+            text-align: center;
+            color:#4f4f4f;
+            margin-top: 5px;
+        }
+        .note3{
+            font-family: 'FZBYFKSK';
+            font-size: 15px;
+            text-align: center;
+            font-weight: bold;
+            color:#298EAF;
+            margin-top: -2px;
+            margin-bottom: -5px;
+        }
+        .note4{
+            font-family: 'FZBYFKSK';
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            color:#1a374b;
+            margin-top: 3px;
+            line-height: 1.8;
+
+        }
+        .highlight1{
+            font-weight:bold;
+            color:#298EAF;
+            font-size: 18px;
+        }
+        .highlight-ks{
+            font-weight:bold;
+            color:#54AECF;
+        }
+    
+
+         /* 加载页样式 */
+        @import url('https://fonts.googleapis.com/css?family=Oswald');
+
+        .loading-container{
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: linear-gradient(to left,#005C97,#478eb8);
+
+            overflow: hidden;
+            z-index: 99999;
+        }
+
+        .loading{
+            width: min(70vw,700px);
+            height: auto;
+            display: block;
+        }
+
+        .water-fill{
+            animation:
+                wave 0.7s infinite linear,
+                fill-up 5s ease-out forwards;
+        }
+
+        @keyframes wave{
+            0%{
+                x:-400px;
+            }
+
+            100%{
+                x:0px;
+            }
+        }
+
+        @keyframes fill-up{
+            0%{
+                height:0;
+                y:130px;
+            }
+
+            100%{
+                height:160px;
+                y:-30px;
+            }
+        }
+        /*等待时长*/
+        #rose {
+            display: flex;
+            justify-content: center;
+        }
+
+
+        /*重点推广城市*/
+        .rectangle {
+            position: absolute;
+            top: 40%;
+            left: 21%;
+            transform: translateY(-50%) translateX(-10%);
+            width: 30%;
+            height: 170px;
+            background-color: #aeced891;
+            /* 新增动画初始状态 */
+            opacity: 0;
+            transition: all 0.8s ease-out;
+        }
+        /* 动画激活类，滚动到区域后生效 */
+        .rectangle.show-box {
+            opacity: 1;
+            /* 保留你原本的居中位移，只消除上浮偏移 */
+            transform: translateY(-50%) translateX(-10%) translateY(0);
+        }
+        /* 初始上浮偏移，没显示时向下沉25px */
+        .rectangle:not(.show-box) {
+            transform: translateY(-50%) translateX(-10%) translateY(25px);
+        }
+        .noteyinru{
+            font-family: 'FZFengYKSJF_Zhong';
+            font-size: 18px;
+            display: inline-block;
+            color: #0f324d;
+            padding-top: 8%;
+            padding-left: 6%;
+            padding-right: 6%;
+            padding-bottom:8%;
+            line-height: 1.3;
+            text-align: justify ;
+            display: block !important;
+            width: 100%;
+        }
+        .rectangle2 {
+            position: absolute;
+            top: -10%;
+            right: 22%;
+            transform: translateY(50%)translateX(10%);
+            width: 35%;
+            height: 252px; 
+            background-color: #aeced891; 
+            padding-top: 2%; 
+            opacity: 0;
+            transition: all 0.8s ease-out;
+        }
+        .rectangle2.show-box {
+            opacity: 1;
+            transform: translateY(50%) translateX(10%) translateY(0);
+        }
+        .rectangle2:not(.show-box) {
+            transform: translateY(50%) translateX(10%) translateY(25px);
+        }
+        .noteyinru2{
+            font-family: 'FZFengYKSJF_Zhong';
+            font-size: 18px;
+            color: #0f324d;
+            line-height: 1.3;
+            padding-top: 2%;
+            padding-left: 6%;
+            padding-right: 6%;
+            text-align: justify ;
+            display: block !important;
+            width: 100%;
+        }
+
+        .rectangle3 {
+            position: absolute;
+            top: 48%;
+            left: 24%;
+            transform: translateY(-50%)translateX(-10%);
+            width: 35%;
+            height: 200px; 
+            background-color: #aeced891; 
+            padding-top: 2%; 
+            opacity: 0;
+            transition: all 0.8s ease-out;
+        }
+        .rectangle3.show-box {
+            opacity: 1;
+            transform: translateY(-50%) translateX(-10%) translateY(0);
+        }
+        .rectangle3:not(.show-box) {
+            transform: translateY(-50%) translateX(-10%) translateY(25px);
+        }
+        .noteyinru3{
+            font-family: 'FZFengYKSJF_Zhong';
+            font-size: 18px;
+            color: #0f324d;
+            line-height: 1.3;
+            padding-top: 2%;
+            padding-left: 6%;
+            padding-right: 6%;
+            text-align: justify ;
+            display: block !important;
+            width: 100%;
+        }
+        </style>
+
+        <title>中国医疗，正在被世界看见——外籍患者赴华就诊面面观</title>
+        
+    </head>
+    
+    <body data-spy="scroll" data-target="#menu" data-offset="56">
+        <!-- 加载页 -->
+        <div class="loading-container">
+            <svg class="loading"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 600 200">
+                <defs>
+                    <pattern id="water"
+                            width=".25"
+                            height="1.1"
+                            patternContentUnits="objectBoundingBox">
+
+                        <path fill="#ffffff"
+                            d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z"/>
+                    </pattern>
+
+                    <text id="text"
+                        x="300"
+                        y="100"
+                        text-anchor="middle"
+                        dominant-baseline="middle"
+                        font-size="100"
+                        font-family="Oswald">
+
+                        LOADING
+
+                    </text>
+
+                    <mask id="text_mask">
+                        <use href="#text" fill="#ffffff"/>
+                    </mask>
+                </defs>
+                <use href="#text" fill="#3498db"/>
+                <rect class="water-fill"
+                    mask="url(#text_mask)"
+                    fill="url(#water)"
+                    x="-400"
+                    y="0"
+                    width="1600"
+                    height="200"/>
+            </svg>
+        </div>
+
+        <!-- 导航栏 -->    
+		<div class="top-nav" id="nav">
+            <div class="nav-tip">
+                <img src="image/web-icon.png" alt="导航图标">
+                <span class="tip-text">页面导航</span>
+            </div>
+            <a class="anchor" href="#pt0">引入</a>
+            <span class="separate">|</span>
+            <a class="anchor" href="#pt1">潮起</a>
+            <span class="separate">|</span>
+            <a class="anchor" href="#pt2">画像</a>
+            <span class="separate">|</span>
+            <a class="anchor" href="#pt3">溯源</a>
+            <span class="separate">|</span>
+            <a class="anchor" href="#pt4">展望</a>
+            <span class="separate">|</span>
+            <a class="anchor" href="#pt5">尾声</a>
+        </div>
+
+        <div class="allcontent">    
+
+            <div class="imagestart"><!--首页-->
+                <div style="height: 500px;"></div>
+            </div>
+
+            <!--正文-->
+            <div class="container555">
+                <!-- 页面内容部分，包括各个章节（pt0, pt1, ...） -->
+                <!--00 引入-->
+                <div id="pt0" style="margin-bottom:0px;">
+                    <div style="height: 40px;"></div>
+                    <div style="height: 10px;margin: auto;"></div>
+                    <p><span class="highlight1">疾病</span>，往往是跨越国界与种族的共同语言。</p>
+                    <p>每个人都可能在某个时刻意识到身体的脆弱：
+                        一场突如其来的高烧、一次发作起来钻心的牙疼、一颗不知何时长出的结节……
+                        哪怕只是些小毛病，都足以把日常生活拉入不确定之中。</p>
+                    <p>艾米的故事，要从某一天的一阵绞痛开始讲起——</p>
+
+                    <!-- 图片容器：三行两列 -->
+                    <div class="image-grid">
+                        <div class="grid-item"><img src="./image/1-1.png" alt="图片描述1"></div>
+                        <div class="grid-item"><img src="./image/1-2.png" alt="图片描述2"></div>
+                        <div class="grid-item"><img src="./image/1-3.png" alt="图片描述3"></div>
+                        <div class="grid-item"><img src="./image/1-4.png" alt="图片描述4"></div>
+                        <div class="grid-item"><img src="./image/1-5.png" alt="图片描述5"></div>
+                        <div class="grid-item"><img src="./image/1-6.png" alt="图片描述6"></div>
+                    </div>
+
+                    <p>事实上，艾米这样的情况并非个例。</p>
+                    <p>长期以来，中国在全球医疗版图中扮演着“输出国”的角色——重症去美国、美容去韩国、大病去日本是主流热潮。
+                        然而近年来，当<span class="highlight1">“China Health Care（中国医疗）”</span>逐渐成为外网高频出现的关键词，
+                        一股名为<span class="highlight1">“来华就医”</span>的潮流，正悄然改变着全球医疗旅游的格局。</p>
+                </div>
+
+                <!--01 潮起 -->
+                <div id="pt1" style="margin-bottom:10px;">
+                    <div style="height: 60px;"></div>
+                    <div class="imagetittle" style="height: 150px; display: flex; justify-content: center; align-items: center;">
+                        <h3 style="text-align: center;margin:0;">
+                            <img src="./image/小标题潮起.png" width="58%">
+                        </h3>
+                    </div>
+
+                    <p>近年来，我国国际医疗行业的规模与日俱增。2023年至2025年，国内提供国际医疗的机构数量从186家稳步增长至253家。接诊量更是呈现突破式增长，从210万人次升至412万人次，带动行业营收从386亿元翻番至826亿元。</p>
+                    <!--国际医疗行业相关数据-->
+                    <div class="note1">2023-2025年中国国际医疗行业相关数据</div>
+                    <div class="flourish-embed flourish-chart" data-src="visualisation/29158731" style="width: 58%;margin: auto;">
+                        <script src="https://public.flourish.studio/resources/embed.js"></script>
+                        <noscript>
+                            <img src="https://public.flourish.studio/visualisation/29158731/thumbnail" width="100%" alt="chart visualization" />
+                        </noscript>
+                    </div>
+                    <div class="note2">数据来源：国家卫生健康委员会、中国医院协会国际医疗服务专委会、弗若斯特沙利文行业调研数据</div>
+                    
+                    <p>国家卫生健康委员会2025年度涉外医疗服务报告的数据进一步印证了这一态势。2025年，全国重点涉外医院接诊国际患者达128万人次，较2022年大幅增长73.6%。</p>
+                    <!--国际医疗行业相关数据-->
+                    <div class="note1">全国重点涉外医院接诊国际患者人次</div>
+                    <div class="flourish-embed flourish-pictogram" data-src="visualisation/29170438" style="width: 50%;margin: auto;">
+                        <script src="https://public.flourish.studio/resources/embed.js"></script>
+                        <noscript>
+                            <img src="https://public.flourish.studio/visualisation/29170438/thumbnail" width="100%" alt="pictogram visualization" />
+                        </noscript>
+                    </div>
+                    <div class="note2">数据来源：国家卫生健康委员会</div>
+                    <p>数据体现的不只是数量的增长，更折射出结构性的变化。来华就医，正在从少数人的偶发选择，逐渐转变为一条可预期、可规划、可执行的医疗路径。
+                    越来越多患者跨越国界来到中国，<span class="highlight1">他们来自何处？因何而来？又为何将求医的终点落在中国？</span>在这场持续升温的“来华就医”现象背后，一幅关于全球患者流动、医疗资源再分配与全球健康治理的图景正徐徐展开。</p>
+                    <p>与此同时，这也让国内涉外医疗体系直面全新的现实考验。随之而来的问题是，我们的医疗系统，做好“迎客”的准备了吗？</p>
+
+                <!--02 画像-->
+                <div id="pt2" style="margin-bottom:10px;">
+                    <div style="height: 60px;"></div>
+                    <div class="imagetittle" style="height: 150px; display: flex; justify-content: center; align-items: center;">
+                        <h3 style="text-align: center;margin:0;">
+                            <img src="./image/小标题画像.png" width="58%"></h3>
+                        </div>
+                    </div>
+             
+                    <p>目前，国内接诊的外籍患者仍<span class="highlight1">以在华常住人口为主</span>（占93.8%），专门从海外赴华求医的患者占6.2%。
+                        在客源地分布上，东南亚患者是主力军，占比达48.3%；欧美患者紧随其后，占比32.7%，其他地区占19.0%。</p>
+                    <div id="chart-container-2" style="width: 500px;height: 400px;margin: 0 auto;">
+                        <script type="text/javascript">
+                            var chartDom = document.getElementById('chart-container-2');
+                            var myChart = echarts.init(chartDom);
+                            var option = {
+                                legend: {
+                                    orient: 'horizontal',
+                                    left: 'center',
+                                    top: 0,
+                                    itemGap: 10,
+                                    textStyle: {
+                                        fontSize: 14        // 图例文字大小
+                                    }
+                                },
+                                tooltip: {
+                                    trigger: 'item',
+                                    formatter: function (params) {
+                                        return (
+                                            params.seriesName +
+                                            '<br/>' +
+                                            '<span style="display:inline-block;width:10px;height:10px;border-radius:70%;background-color:' +
+                                            params.color +
+                                            ';margin-right:5px;"></span>' +
+                                            params.name +
+                                            '：' +
+                                            params.percent.toFixed(1) +
+                                            '%'
+                                        );
+                                    }
+                                },
+                                color: ['#54AECF', '#90CDE2', '#C4E4F0'],
+                                series: [
+                                    {
+                                        name: '来源地区',
+                                        type: 'pie',
+                                        radius: '70%',
+                                        data: [
+                                            { value: 48.3, name: '东南亚' },
+                                            { value: 32.7, name: '欧美' },
+                                            { value: 19, name: '其他' }
+                                        ],
+                                        emphasis: {
+                                            itemStyle: {
+                                                shadowBlur: 10,
+                                                shadowOffsetX: 0,
+                                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                            }
+                                        },
+                                        label: {
+                                            show: true,
+                                            position: 'outside',
+                                            formatter: function (params) {
+                                                return `${params.name}\n${params.percent.toFixed(1)}%`;
+                                            },
+                                            fontFamily: 'Microsoft YaHei',
+                                            fontSize: 13,
+                                            color: '#333',
+                                            lineHeight: 18,
+                                            fontWeight: 'normal',
+                                            whiteSpace: 'pre-line'
+                                        },
+                                        labelLine: {
+                                            show: true,
+                                            length: 15,
+                                            length2: 10,
+                                            smooth: true
+                                        },
+                                        avoidLabelOverlap: true
+                                    }
+                                ]
+                            };
+                            myChart.setOption(option);
+                        </script>
+                    </div>
+                    <div class="note2">数据来源：国家卫生健康委员会、各重点城市国际医疗运营报告</div>
+
+                    <!--义乌外籍人士就医数据-->
+                    <p>虽然当前在华常住人口仍是基本盘，但一个不可忽视的爆发点是，<span class="highlight1">专门为“看病”而入境的短期旅客</span>正在急速增多。
+                        以全球小商品之都义乌为例，义乌市卫健局的数据显示，2025年义乌外籍人士就医总人次超过7.1万，同比增长24%。</p>
+                    <div class="flourish-embed flourish-pictogram" data-src="visualisation/29170658" style="width: 50%;margin: auto;">
+                        <script src="https://public.flourish.studio/resources/embed.js"></script>
+                        <noscript>
+                            <img src="https://public.flourish.studio/visualisation/29170658/thumbnail" width="100%" alt="pictogram visualization" />
+                        </noscript>
+                    </div>
+                    <div class="note2">数据来源：义乌市卫健局</div>
+
+                    <p>而其中，非常住外籍人士（即短期入境者）的就医比例，从2023年的30%增长至2025年的约50%。这意味着，在义乌看病的外国人中，专门入境或顺道看病的人数增加了超万人，比例已经达到了一半。</p>
+                    <div class="note1">义乌市外籍人士就医短期入境占比</div>
+                    <div class="flourish-embed flourish-pictogram" data-src="visualisation/29163980" style="width: 50%;margin: auto;">
+                        <script src="https://public.flourish.studio/resources/embed.js"></script>
+                        <noscript>
+                            <img src="https://public.flourish.studio/visualisation/29163980/thumbnail" width="100%" alt="pictogram visualization" />
+                        </noscript>
+                    </div>
+                    <div class="note2">数据来源：义乌市卫健局</div>
+
+                    <p><span class="highlight1">医疗就医</span>，正在成为部分外籍人员来华国际流动最重要的目的本身。</p>
+                    <p>从病种结构来看，外籍患者就医的疾病类型多元，其中最核心的两类是<span class="highlight1">慢性病、疑难病</span>，
+                        二者分别占比40%和30%，这构成了外籍人士跨境就医的主要诉求。</p>
+                    <div class="note1">外籍患者来华就医的主要疾病类型</div>
+                    <div id="chart-container-3" style="width: 600px;height: 500px;margin: 0 auto;">
+                        <script type="text/javascript">
+                            var chartDom = document.getElementById('chart-container-3');
+                            var myChart = echarts.init(chartDom);
+                            var option = {
+                                tooltip: {
+                                    trigger: 'item',
+                                    formatter: function (params) {
+                                        return (
+                                            params.seriesName +
+                                            '<br/>' +
+                                            '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background-color:' +
+                                            params.color +
+                                            ';margin-right:5px;"></span>' +
+                                            params.name +
+                                            '：' +
+                                            params.percent.toFixed(1) +
+                                            '%'
+                                        );
+                                    }
+                                },
+                                legend: {
+                                    orient: 'horizontal',
+                                    left: 'center',
+                                    top: 0,              // 放在顶部，减少垂直占用
+                                    itemGap: 10,
+                                    textStyle: {
+                                        fontSize: 14        // 图例文字大小
+                                    }
+                                },
+                                color: ['#298EAF', '#54AECF', '#90CDE2', '#C4E4F0'],
+                                series: [
+                                    {
+                                        name: '患病类型',
+                                        type: 'pie',
+                                        radius: ['20%', '75%'],    // 内半径20%，外半径75%（占满容器）
+                                        center: ['50%', '55%'],    // 垂直方向略下移，避开顶部图例
+                                        roseType: 'area',
+                                        itemStyle: {
+                                            borderRadius: 8
+                                        },
+                                        label: {
+                                            show: true,
+                                            position: 'outside',
+                                            formatter: function (params) {
+                                                return `${params.name}: ${params.percent.toFixed(1)}%`;
+                                            },
+                                            fontFamily: 'Microsoft YaHei',
+                                            fontSize: 13,
+                                            color: '#333',
+                                            lineHeight: 20,
+                                            fontWeight: 'normal'
+                                        },
+                                        labelLine: {
+                                            show: true,
+                                            length: 15,
+                                            length2: 10,
+                                            smooth: true
+                                        },
+                                        avoidLabelOverlap: true,
+                                        data: [
+                                            { value: 40, name: '慢性病' },
+                                            { value: 30, name: '疑难病' },
+                                            { value: 20, name: '体检' },
+                                            { value: 10, name: '其他' }
+                                        ]
+                                    }
+                                ]
+                            };
+                            myChart.setOption(option);
+                        </script>
+                    </div>
+                    <div class="note2">数据来源：中国医院协会国际医疗服务专委会</div>
+
+                    <p>“来华就医”并不是一个简单的单一命题，而是一份份差异化需求。因此，针对不同的疾病，外籍患者的“寻医地图”也各具特色。</p>
+                    <p>在<span class="highlight1">上海、广东、海南</span>等医疗资源丰富且集中的核心地区，
+                        外籍患者的就医需求深度绑定了医院的优势学科、重点专科，呈现出“就诊科室多元化，以疑难重症攻坚为核心”的特点。
+                        这里不仅为常驻外籍人士提供日常疾病诊疗，更成为全球患者寻求肿瘤治疗、复杂整复外科手术、神经外科及疑难眼病等<span class="highlight1">顶尖医疗的目的地</span>。
+                    </p>
+
+                    <!-- 科室名片容器（无背景色） -->
+                    <div class="dept-cards-wrapper">
+                        <div class="dept-cards-grid">
+                            <!-- 卡片 1：海南博鳌乐城国际医疗旅游先行区 -->
+                            <div class="dept-card lecheng">
+                                <div class="additional">
+                                    <div class="user-card">
+                                        <div class="level">🏥 国际医疗重点</div>
+                                        <div class="dept-icon">
+                                            <img src="./image/海南乐城.jpg" alt="乐城图标">
+                                        </div>
+                                        <div class="points">📈 诸多特色专科</div>
+                                    </div>
+                                    <div class="more-info">
+                                        <h1>🏝️ 海南博鳌乐城国际医疗旅游先行区</h1>
+                                        <div class="info-list">
+                                            <div class="info-item"><span class="info-icon">🔬</span><div class="info-content"><div class="info-label">罕见病</div></div></div>
+                                            <div class="info-item"><span class="info-icon">🎗️</span><div class="info-content"><div class="info-label">肿瘤</div></div></div>
+                                            <div class="info-item"><span class="info-icon">👁️</span><div class="info-content"><div class="info-label">眼科</div></div></div>
+                                            <div class="info-item"><span class="info-icon">👂</span><div class="info-content"><div class="info-label">耳鼻喉科</div></div></div>
+                                            <div class="info-item"><span class="info-icon">🤰</span><div class="info-content"><div class="info-label">生殖</div></div></div>
+                                            <div class="info-item"><span class="info-icon">🏋️</span><div class="info-content"><div class="info-label">体检</div></div></div>
+                                            <div class="info-item"><span class="info-icon">💆</span><div class="info-content"><div class="info-label">医美</div></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="general">
+                                    <h1>🏝️ 海南省</h1>
+                                    <p>海南博鳌乐城国际医疗旅游先行区已经成为海南吸引海外医疗消费旅游的一张亮丽名片，初步形成了7大优质专科。</p>
+                                    <span class="more">👆悬浮卡片查看热门科室</span>
+                                </div>
+                            </div>
+
+                            <!-- 卡片 2：上海医疗资源 -->
+                            <div class="dept-card shanghai">
+                                <div class="additional">
+                                    <div class="user-card">
+                                        <div class="level">🏥 国际医疗高地</div>
+                                        <div class="dept-icon">
+                                            <img src="./image/上海医院.jpg" alt="上海医疗图标">
+                                        </div>
+                                        <div class="points">📈 全球患者汇聚</div>
+                                    </div>
+                                    <div class="more-info">
+                                        <!-- 第一个医院名称：h1 样式与海南标题完全相同 -->
+                                        <h1>🏥 复旦大学附属华山医院</h1>
+                                        <div class="info-list">
+                                            <div class="info-item"><span class="info-icon">🧠</span><div class="info-content"><div class="info-label">颅内肿瘤</div></div></div>
+                                            <div class="info-item"><span class="info-icon">⚡</span><div class="info-content"><div class="info-label">自身免疫性脑病</div></div></div>
+                                        </div>
+                                        
+                                        <!-- 第二个医院名称 -->
+                                        <h1>🏥 上海第九人民医院</h1>
+                                        <div class="info-list">
+                                            <div class="info-item"><span class="info-icon">💉</span><div class="info-content"><div class="info-label">整复外科</div></div></div>
+                                            <div class="info-item"><span class="info-icon">📡</span><div class="info-content"><div class="info-label">介入科</div></div></div>
+                                            <div class="info-item"><span class="info-icon">🦷</span><div class="info-content"><div class="info-label">口腔颌面头颈肿瘤</div></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="general">
+                                    <h1>🏙️ 上海市</h1>
+                                    <p>2025年，复旦大学附属华山医院国际部收治了来自全球90个国家及地区的患者，除日常诊疗外，越来越多境外患者慕名而来。</p>
+                                    <p>上海交通大学医学院附属第九人民医院（北部）特需病区开业至今已接诊来自多国的15名患者，覆盖多个专科领域。</p>
+                                    <span class="more">👆悬浮卡片查看热门科室</span>
+                                </div>
+                            </div>
+
+                            <!-- 卡片 3：广东省 · 香港大学深圳医院 -->
+                            <div class="dept-card guangdong">
+                                <div class="additional">
+                                    <div class="user-card">
+                                        <div class="level">🏥 国际医疗重点</div>
+                                        <div class="dept-icon">
+                                            <img src="./image/广东医疗.jpg" alt="广东医疗图标">
+                                        </div>
+                                        <div class="points">📈 多学科诊疗中心</div>
+                                    </div>
+                                    <div class="more-info">
+                                        <h1>🏥 香港大学深圳医院</h1>
+                                        <div class="info-list">
+                                            <div class="info-item"><span class="info-icon">🦴</span><div class="info-content"><div class="info-label">脊柱外科</div></div></div>
+                                            <div class="info-item"><span class="info-icon">👶</span><div class="info-content"><div class="info-label">儿科</div></div></div>
+                                            <div class="info-item"><span class="info-icon">🎗️</span><div class="info-content"><div class="info-label">肿瘤学科</div></div></div>
+                                            <div class="info-item"><span class="info-icon">🏥</span><div class="info-content"><div class="info-label">胃肠外科</div></div></div>
+                                            <div class="info-item"><span class="info-icon">❤️</span><div class="info-content"><div class="info-label">心血管内科</div></div></div>
+                                            <div class="info-item"><span class="info-icon">🤰</span><div class="info-content"><div class="info-label">产科</div></div></div>
+                                            <div class="info-item"><span class="info-icon">🩺</span><div class="info-content"><div class="info-label">消化内科</div></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="general">
+                                    <h1>🏙️ 广东省</h1>
+                                    <p>香港大学深圳医院的诊疗范围涵盖脊柱外科、儿科、肿瘤学科、胃肠外科、心血管内科、产科、消化内科等众多科室。其中，脊柱外科是外籍人士就诊的热门科室之一。</p>
+                                    <span class="more">👆悬浮卡片查看热门科室</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <p>而在<span class="highlight1">云南、黑龙江等边境省份</span>，跨境就医则呈现出更强的地缘性。
+                        患者往往来自邻国，需求集中于高血压、糖尿病等基础慢病管理，针灸、推拿、艾灸等中医康养服务<span class="highlight1">有效弥补了周边国家医疗资源的不足</span>。</p>
+                    <div class="note2">鼠标置于卡片上方，查看更多内容</div>
+
+                    <div style="height: 60px;"></div>
+                    <div class="cards">
+                        <div class="card">
+                            <div class="imgBox"><img src="image/云南勐腊.png" alt="" /></div>
+                            <div class="content">
+                                <div class="details">
+                                    <h2>云南省<br/>
+                                        <p>勐腊县人民医院</p>
+                                    </h2>
+                                    <div class="data">
+                                        <div>
+                                            2024年，<br>
+                                            该院接诊外籍患者同比增长89%，<br>
+                                            其中，老挝患者占比达97.26%。<br>
+                                            跨境就诊患者以<span class="highlight-ks">高血压、糖尿病、</span><br>
+                                            <span class="highlight-ks">呼吸系统感染</span>和<span class="highlight-ks">消化道疾病</span>为主。<br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="imgBox"><img src="image/黑龙江绥芬河.png" alt="" /></div>
+                            <div class="content">
+                                <div class="details">
+                                    <h2>黑龙江省<br/>
+                                        <p>绥芬河市人民医院</p>
+                                    </h2>
+                                    <div class="data">
+                                        <div>
+                                            2024年，<br>
+                                            黑龙江绥芬河市人民医院<br>
+                                            接待外籍患者突破1万人次，<br>
+                                            <span class="highlight-ks">针灸、推拿、艾灸</span><br>
+                                            以及<span class="highlight-ks">基因检测</span>等项目受到青睐。<br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="imgBox">
+                                <img src="image/黑龙江黑河.png" alt="" />
+                            </div>
+                            <div class="content">
+                                <div class="details">
+                                    <h2>黑龙江省<br/>
+                                        <p>黑河市中医医院</p>
+                                    </h2>
+                                    <div class="data">
+                                        <div>该院专门成立国际医疗部，<br>
+                                            开设国际诊疗体检区，<br>
+                                            针对俄罗斯人体质特点，<br>
+                                            推出<span class="highlight-ks">针灸、推拿、刮痧</span>等特色服务<br>
+                                            及<span class="highlight-ks">定制化体检套餐</span>。<br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>从顶尖疑难重症到日常慢病管理，从现代医学到传统中医，中国医疗构建了一个多层次、全覆盖的服务体系。
+                        这种“全链条”的服务能力，让不同需求、不同支付能力、不同地域的患者都能在中国找到适合自己的医疗解决方案。</p>
+                </div>
+
+                <!--03 溯源-->
+                <div id="pt3" style="margin-bottom:10px;">
+                    <div style="height: 60px;"></div>
+                    <div class="imagetittle" style="height: 150px; display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center;margin:0;">
+                            <img src="./image/小标题溯源.png" width="58%"></div>
+                    </div>
+                    <p>为什么全球患者开始将目光投向东方？TikTok等社交媒体平台上的讨论或许能给出最直观的答案。</p>
+                    <p><span class="highlight1">价格方面</span>，TikTok平台中的用户讨论多聚焦于“本国医疗费用昂贵”、而“中国费用较低”，在本国治病甚至可能导致“破产”。</p>
+
+                    <!-- 弹幕墙容器 价格 -->
+                    <div class="note1">🏥 国际患者弹幕墙 · 价格篇 💴</div>
+                    <div class="note2">鼠标置于弹幕，可悬停查看</div>
+                    <div style="width: 60%; height: 400px; margin: 0 auto;">
+                        <div class="danmaku-embed">
+                            <div class="danmaku-stage">
+                                <div class="danmaku-container" id="danmakuContainer1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="note2">数据来源：TikTok标签“#china health care”中的用户评论</div>
+
+                    <!-- 人物讲述 -->
+                    <p>关于中外医疗的价格差异，Nico和Mr.A想和你详细分享他们的经历。</p>
+                    <div class="patient-board">
+                        <ul class="team">
+                            <li class="member co-funder">
+                                <div class="thumb"><img src="./image/人物讲述1.png"></div>
+                                <div class="description">
+                                    <h3>@Nico</h3>
+                                    <p>最近我注意自己身体有些不适，去医院检查时被告知需要手术治疗。
+                                        在中国，从住院到出院，全部费用不到15000人民币，同样的手术，在南非和土耳其至少30000人民币起步。
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="member co-funder">
+                                <div class="thumb"><img src="./image/人物讲述2.png"></div>
+                                <div class="description" style="text-align: left;">
+                                    <h3>@Mr.A</h3>
+                                    <p>我在菲律宾心脏不适，当地私立医院建议做心脏造影，费用约10000多人民币。
+                                        由于没有当地医保，我的家人对比后发现，同样的手术在中国深圳仅需3000多元人民币。
+                                        考虑到深圳的医疗水平更先进，且我的家人曾在此居住，对当地医疗环境熟悉，我们决定前往深圳治疗。
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 弹幕墙容器 效率-->
+                    <p><span class="highlight1">效率</span>方面，国际患者声称在本国治疗需要等待极长的时间，甚至几个月也无法见到医生。
+                        或许你还记得艾米？在英国胃痛持续两年无法见到医生，
+                        而在中国仅用13天就完成了从检查、诊断到治疗的全流程。
+                    </p>
+                    <div class="note1">🏥 国际患者弹幕墙 · 效率篇 🩺</div>
+                    <div class="note2">鼠标置于弹幕，可悬停查看</div>
+                    <div style="width: 60%; height: 400px; margin: 0 auto;">
+                        <div class="danmaku-embed">
+                            <div class="danmaku-stage">
+                                <div class="danmaku-container" id="danmakuContainer2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="note2">数据来源：TikTok标签“#china health care”中的用户评论</div>
+                    
+                    <!-- 人物讲述 -->
+                    <p>关于中外医疗等待时长的差异，马修和Brennan深有体会。</p>
+                    <div class="patient-board">
+                        <ul class="team">
+                            <li class="member co-funder">
+                                <div class="thumb"><img src="./image/人物讲述3.png"></div>
+                                <div class="description">
+                                    <h3>@马修</h3>
+                                    <p>16岁开始，扁桃体炎就像噩梦一样缠着我。
+                                        三年了，美国的医生只能开止痛药和激素，手术排期要等整整六个月，术前检查还要再等四个月。
+                                        但大学马上开学，我真的绝望了。6月底，我抱着最后一丝希望飞到了中国。
+                                        我顺利接受了手术治疗，从踏进诊室到告别三年的噩梦，只隔了三天。
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="member co-funder">
+                                <div class="thumb"><img src="./image/人物讲述4.png"></div>
+                                <div class="description" style="text-align: left;">
+                                    <h3>@Brennan</h3>
+                                    <p>腰椎和鼻窦炎折磨了我很久，在加拿大公立医院就是开止痛药，然后让我回家等，这一等就是好几个月，连手术的影子都见不着。
+                                        实在熬不住了，我飞了13个小时到广州，没想到从走进门诊、办住院、做检查到做完鼻内镜微创手术，全过程只用了3天。
+                                        在加拿大等几个月都等不到的治疗，在中国3天就搞定了。
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p>一边是海外患者日益迫切的健康需求，一边是本土医疗系统难以承载的压力，全球多地正陷入不同程度的医疗困境。具体来看，<span class="highlight1">疾病负担较重、等待时间过长、治疗费用高昂</span>，是迫使外籍患者踏上跨国求医之路的重要推力。</p>
+                    <p>首先，居高不下的疾病负担是驱动患者外流的根本原因。</p>
+                    <p>在公共卫生领域，<span class="highlight1">“伤残调整寿命年”（DALY）</span>是一个衡量疾病负担的关键指标，它指从发病到死亡所损失的全部健康寿命年。DALY数值越高，意味着该国国民受疾病折磨越深、整体健康负担越重。</p>
+                    <p>通过观察健康指标与评估研究所（IHME）提供的1990年至2023年的数据走势，我们可以清晰地看到，<span class="highlight1">美国、英国、德国、波兰等</span> 欧美国家在肌肉骨骼疾病、糖尿病和肾病、消化系统疾病以及肿瘤等领域的DALY数值，长期处于较高水位且呈现上升趋势。相比之下，中国在多项指标的控制上表现出更为平稳的态势。大量欧美患者长期处于<span class="highlight1">“带病生存”</span>的状态，迫切需要更高效的医疗干预。</p>
+
+
+                    <!--疾病负担-->
+                    <div class="note1">1990年-2023年各国的疾病负担分布</div>
+                    <div style="width:55%; margin: 15px auto;">
+                        <div class="flourish-embed flourish-chart" data-src="visualisation/29183275">
+                        <script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29183275/thumbnail" width="100%" alt="chart visualization" /></noscript>
+                    </div>
+                    </div>
+
+                    <div class="note2">数据来源：健康指标与评估研究所（IHME）</div>
+                    
+                    <!--等待时长-->
+                    <p><span class="highlight1">“排队难”</span>更是全球医疗的普遍痛点。据中国日报网此前的报道，近40%英国公立医院科室治疗<span class="highlight1">等待时间超18周</span>。在我国，三甲医院普通门诊平均候诊时间一般<span class="highlight1">不足30分钟</span>，急诊抢救响应时间仅需<span class="highlight1">5分钟</span>。</p>
+                    <p>具体到诊断测试项目，英国国民医疗服务体系（NHS England）披露的2025年15项诊断检测数据显示，<span class="highlight1">平均每个患者自全科转诊至完成任意一项诊断测试的等待时间为2.6周。</span>。其中，哪怕是耗时最短的CT检查也需等待1.83周，而电生理等复杂检查的等待时间更是高达6.06周，共有4项诊断测试的等待时长超过1个月。对于需要紧急治疗的患者而言，这样的等待周期可能意味着病情的延误，甚至错过最佳治疗时机。</p>
+
+
+                    <div class="note1">2025年英国十五项诊断测试等待时长分布情况</div>
+                    <div id="rose" style="margin-top:-30px;margin-bottom: -30px;">
+                        <div id="rose-chart-direct" style="width: 800px; height: 560px; margin: 0 auto;"></div>
+                    </div>
+                    <div class="note2">数据来源：英国国民医疗服务体系（NHS England）</div>
+
+                    <!--自愿支付费用-->
+                    <p><span class="highlight1">费用</span>则是绕不开的另一重现实考量。结合经济合作与发展组织（OECD）统计的个人及家庭自愿自付医疗费用（即扣除医保报销后，民众需要自行承担的医疗支出）不难发现，发达国家居高不下的自付成本，正推动不少患者选择跨境就医。以2022年为例，美国与加拿大的人均自愿及家庭自付医疗费用分别高达2088美元和1994美元，而同期中国的这一数字仅为551美元。这意味着，<span class="highlight1">北美患者在本国的平均自付开销，几乎是中国的3.6到3.8倍</span>。即便算上机票和住宿的成本，患者在中国就诊的综合支出依然远低于在本国治疗的成本。</p>
+                    <div class="note1">2015年-2022年各国人均自愿及家庭自付医疗费用分布</div>
+                    <div style="height: 3px;"></div>
+                    <div class="note2">滑动滑块可筛选具体费用区间</div>
+                    <div id="heatmap" style="width:100%; height:400px;margin-top: 4px;margin-bottom: 7px;"></div>
+                    <script src="./js/heatmap.js"></script>
+                    <div class="note2">数据来源：经济合作与发展组织（OECD）</div>
+
+                    <!--医疗可及性及质量-->
+                    <p>而在东亚、南亚、东南亚的一些发展中国家，问题更多体现在<span class="highlight1">医疗可及性和质量</span>的差距上。对于欠发达地区的患者而言，他们<span class="highlight1">难以在本地获得足够稳定、及时且有保障的医疗服务</span>。这使得中国成为了这些国家的患者“向上寻医”的更优解。 </p>
+                    <div class="note1">2019年各国医疗服务可及性与质量（HAQ）指数</div>
+                    <div style="text-align: center;margin-top: 30px;margin-bottom: 30px;">
+                        <img src="./image/可及性和质量.png" style="width: 63%;">
+                    </div>       
+
+                    <div class="note2">数据来源：Assessing performance of the Healthcare Access and Quality Index, overall and by select age groups,<br> for 204 countries and territories, 1990–2019: a systematic analysis from the Global Burden of Disease Study 2019</div>
+                    
+                    <!--重点推广城市-->
+                    <p>海外医疗的短板，成为中国涉外医疗崛起的契机。中国之所以能够承接这股跨境流动，关键在于国际医疗服务基础设施正逐步完善。中国医院协会国际医疗服务专委会报告显示，据不完全统计，2024年中国境内（不含港澳台）共有<span class="highlight1">57个城市的850家医疗机构</span>开展国际医疗服务。这意味着，国际医疗已不再只是少数几家头部医院的能力，而是正在形成更广泛的服务网络。</p>
+                    <div class="yinrugif" style="margin-top: 0px; margin-bottom: 0px; text-align: center; position: relative;">
+                        <div class="rectangle">
+                            <span class="noteyinru">
+                                同时，国际医疗重点推广城市也在持续扩容，北京、上海、广州、深圳、海南（全省）、天津、南京、苏州、福州等地逐步形成承接国际患者的核心区域。<br>
+                            </span>
+                        </div>
+                        <img src="./image/重点推广城市.png" style="width:47%;margin-left:17%">
+                    </div>
+                    
+
+                    <p>2026年3月，广东省卫生健康委、省医保局、省药监局联合公布首批广东省国际医疗服务试点医院名单，来自<span class="highlight1">广州、深圳、珠海、佛山、汕头</span>五地的25家医院成功入选，这标志着广东省国际医疗服务试点工作正式落地实施。</p>
+                    <div class="note1">广东省首批国际医疗服务试点医院</div>
+                    <div style="height: 5px;"></div> 
+                    <div class="note2">滚动鼠标滑轮缩放地图</div>
+                    <div style="height: 18px;"></div>         
+                    <iframe src="./guangdong.html" width="48%" height="400" frameborder="0" scrolling="auto"     
+                    style="display:block; margin:0 auto;border: 2px solid #298EAF;  /* 和你图表统一的蓝色边框 */border-radius: 4px;/* 可选圆角，不要就删掉这行 */"></iframe>
+
+                    <p>此外，<span class="highlight1">海南和上海</span>依托地理位置、医疗资源等优势，成为<span class="highlight1">入境医疗旅游热门地</span>，客源所覆盖国家及地区数量众多。</p>
+                    <p>作为我国唯一的“医疗特区”，海南自贸港博鳌乐城国际医疗旅游先行区（以下简称乐城）汇聚高水平医疗机构和顶尖优质医疗资源，成为入境医疗旅游的核心承载地。</p>
+                    <div class="yinrugif" style="margin-top: 0px; margin-bottom: 0px;  position: relative;">
+                        <div class="rectangle2">
+                            <span class="noteyinru2">
+                                海南博鳌乐城文化产业发展有限公司副总经理胡璐介绍，2025年，乐城立足海南得天独厚的生态与旅游资源，深度融合知名专家诊疗、特许医疗、中医理疗等特色医疗资源，精心打造并推出国际医疗旅游线路，当年便接待入境医疗旅游游客超9300人次，客源覆盖印度尼西亚、马来西亚、老挝、加拿大等14个国家。<br>
+                            </span>
+                        </div>
+                        <div style="text-align: center;margin-right: 23%;">
+                            <img src="./image/海南地图.png" style="width:60%;">
+                        </div>   
+                    </div>
+
+                    <div style="height: 20px;"></div>
+                    <p>上海则凭借高水平医疗资源与国际化城市环境，成为外籍患者密度极高的就医窗口。</p>
+                    <div class="yinrugif" style="margin-top: 20px; margin-bottom: 0px; position: relative;">
+                        <div class="rectangle3">
+                            <span class="noteyinru3">
+                                新浪财经报道2025年上海公立医院服务外籍患者7.32万人次，同比增长8%。其中，复旦大学附属华山医院收治的外籍患者覆盖全球90个国家及中国港澳台地区，客源国前五分别为美国、日本、加拿大、澳大利亚和德国。<br>
+                            </span>
+                        </div>
+                        <div style="margin-left: 27%;text-align: center; ">
+                            <img src="./image/上海地图.png" style="width:42%;">
+                        </div>
+                    </div>
+                   
+                    <!--免签政策-->
+                    <p>如果说完善的医疗基础设施是中国承接全球患者的“硬实力”，那么持续优化的入境政策与便利化措施，则是降低跨国就医门槛的“软实力”。从2013年到2026年，<span class="highlight1">中国的对外免签政策呈现出持续扩容的趋势</span>。其中，单方面免签国家数量从最初的不足10个增长至如今的30余个，互免普通护照签证的国家数量也稳步增加。特别是2023年以来，中国密集出台了一系列入境便利化措施，包括延长免签停留时间、简化签证申请流程等。</p>
+                    <div class="note1">我国对外免签政策变化</div>
+                    <div style="width:50%; margin:0 auto; display:block;">
+                        <div class="flourish-embed flourish-scatter" data-src="visualisation/29190675"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29190675/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>    
+                    </div>
+                    <div class="note2">数据来源：中华人民共和国外交部</div>
+                    <p>有序扩大单方面免签国家范围、优化区域性入境免签政策、持续完善签证、通讯、住宿、支付等便利措施，这些变化共同降低了外籍患者来华的制度成本。“说走就走”的跨国就医正变得前所未有地简单。</p>
+                </div>
+
+                <!--展望：蓝海之下，机遇与挑战并存-->
+                <div id="pt4" style="margin-bottom:10px;">
+                    <div style="height: 60px;"></div>
+                    <div class="imagetittle" style="height: 150px; display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center;margin:0;">
+                            <img src="./image/标题展望.png" width="58%">
+                        </div>
+                    </div>
+                    <p>从全球视野来看，医疗旅游市场正是一片广阔的蓝海。据智库机构Grand View Research预测，全球医疗旅游市场规模将<span class="highlight1">从2025年的340亿美元，以14.1%的复合年增长率，攀升至2035年的1262亿美元</span>。来华就医的热潮，让中国医疗旅游站上了全球风口。中国的医疗旅游虽然处于初步阶段，但潜力巨大。</p>
+                    <p>然而，热潮之下仍有不可忽视的隐忧。</p>
+                    <p>首先是<span class="highlight1">人才资源的稀缺</span>。
+                    <p>根据《2025中国卫生健康统计年鉴》统计的医师卫生资源，医师人数（2008—2022）、护士和助产士人数（2014—2022）总数在183个国家中排名<span class="highlight1">第一</span>，但引入人口基数变量后，中国的各项指标排位出现了明显后移，前者退居到了<span class="highlight1">第55名</span>，后者跌至<span class="highlight1">第95名</span>。这一结果体现了中国在医疗资源配置上呈现出总量庞大，但人均占有量居中的现状。我国每万人口的医师、护士数量在国际排名中依然不具备明显优势，在面对庞大且不断增长的涉外医疗需求时，<span class="highlight1">医护资源的挤占引发了一定的担忧</span>。</p>
+
+                    <img src="./image/医疗资源排名变化.png" style="width: 100%;margin-top: -50px;">
+
+
+                    <p>其次，<span class="highlight1">“水土不服”的软性障碍依然存在</span>。</p>
+                    <p>在上海含有国际医疗服务的医院开展的一项调查显示，<span class="highlight1">语言障碍</span>是外籍患者反映最普遍的问题，高达65.8%的受访患者因与医护人员沟通不畅而感到困扰。此外，<span class="highlight1">信息壁垒</span>也让部分患者望而却步——71.4%的外籍患者在接受治疗前对上海医院的服务水平缺乏了解，而即便在通过正式渠道获取信息的17.1%的患者中，大多数也认为信息不够翔实，难以有效指导就医选择。</p>
+                    <p>信息的不充分，意味着许多潜在患者即便已经对中国医疗产生兴趣，也仍然停留在<span class="highlight1">“知道有这个可能”，却不知道“该如何抵达”</span>的阶段。这也提醒我们，要想搭建好这座跨国求医的桥梁，还需要耐心打通语言和信息上的“最后一公里”。</p>
+                </div>
+ 
+                <!--尾声-->
+                <div id="pt5" style="margin-bottom:10px;">
+                    <div style="height: 60px;"></div>
+                    <div class="imagetittle" style="height: 150px; display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center;margin:0;">
+                            <img src="./image/标题尾声.png" width="35%"></div>
+                    </div>
+                    <p class="highlight1" id="introText1">跨越山海的求医路，牵系的是一个个真实具体的生命。</p>
+                    <p>从“性价比首选”走向“全球顶尖医疗目的地”，中国要跨过的，是语言和信息的鸿沟，是医疗资源配置的难题。在未来，当<span class="highlight1">人才短板补齐、服务体系完善、信息渠道畅通</span>，中国才有底气以更开放的姿态、更可靠的服务，成为全球患者愿意托付健康的地方，让“健康无国界”从一句愿景，落成可触的现实。</p>
+                </div>
+
+
+                <!--参考文献等-->
+                <div style="margin-bottom:10px;">
+
+                    <div class="imageending" style="height: 920px;">
+                        <div style="background-color: #e6f1f3bb; height: 920px;">
+                        <div style="height: 2px;"></div>
+
+                            <p class="note3">团队成员：</p>
+                            <p class="note4">
+                                游乐怡 李桂霞 梁佩怡 董嘉迪</p>
+
+                            <p class="note3">数据来源：</p>
+                            <p class="note4">
+                                [1]国家卫生健康委员会<br>
+                                [2]中国医院协会国际医疗服务专委会<br>
+                                [3]中华人民共和国外交部<br>
+                                [4]弗若斯特沙利文行业调研<br>
+                                [5]义乌市卫健局<br>
+                                [6]各重点城市国际医疗运营报告<br>
+                                [7]健康指标与评估研究所（IHME）：GBD<br>
+                                [8]英国国民医疗服务体系（NHS England）：Monthly Diagnostics Data 2025<br>
+                                [9]经济合作与发展组织（OECD）：Health expenditure and financing<br>
+                                [10]国家卫生健康委员会：《2025中国卫生健康统计年鉴》<br>
+                            </p>
+                            <p class="note3">参考资料：</p>
+                            <p class="note4">
+                            [1]人民日报健康客户端：《英国博主“打飞的”来中国求医，点赞中国医疗又快又好》<br>
+                            [2]国家卫生健康委、商务部、国家中医药局、国家疾控局：《关于印发独资医院领域扩大开放试点工作方案的通知》<br>
+                            [3]海南省人民政府：《乐城推出8款国际医疗旅游产品》<br>
+                            [4]新民晚报：《越来越多的老外青睐到三甲医院就医“打卡”,代表们热议: 国际医疗旅游如何成上海新名片》<br>
+                            [5]第九人民医院：《附属九院助力海外患者无忧就医》<br>
+                            [6]金羊网：《“过境免签”催热入境医疗 海外患者“打飞的”广东寻医》<br>
+                            [7]香港大学深圳医院：《接诊129个国家地区患者，港大深圳医院“国际范儿”这样炼成！》<br>
+                            [8]人民日报：《关注云南勐腊：医疗服务实现从“患者跨境”到“技术过境”》<br>
+                            [9]牡丹江市人民政府：《全国首张跨境医疗服务保单落地绥芬河自贸片区》<br>
+                            [10]黑龙江人民政府：《黑河市积极构建便捷高效的跨境医疗服务体系》<br>
+                            [11]Vista看天下：《全网疯传“外国人把病攒着到中国看”，可信度到底有多高》<br>
+                            [12]深圳特区报：《跨国“心”选择！深圳前海泰康医院为英国籍患者精准快速疏通心脏“堵点”》<br>
+                            [13]正解局：《1.8万亿市场，中国医院到底该怎么赚外国人的钱？》<br>
+                            [14]华中科技大学协和江北医院：《国患者跨洋求医 协和江北医院高效诊疗显实力》<br>
+                            [15]金羊网：《飞13小时来广州看鼻窦炎省2万美元，一场逃离“医疗斩杀线”的跨国奔现》<br>
+                            [16]21世纪经济报：《广东公布首批25家国际医疗服务试点医院，探索保险直付落地》<br>
+                            [17]新浪财经：《“来华就医”潮涌全球！入境医疗旅游激活消费新动能》<br>
+                            [18]Grand View Research：《Medical Tourism Market (2026 - 2035)》<br>
+                            [19]Haakenstad A, Yearwood J A, Fullman N, et al. Assessing performance of the Healthcare Access and Quality Index,<br>
+                            overall and by select age groups, for 204 countries and territories, 1990–2019: a systematic analysis from the Global<br>
+                            Burden of Disease Study 2019[J]. The Lancet global health, 2022, 10(12): e1715-e1743.<br>
+                            [20]张天天,戴瑞明,仓静,等.上海国际医疗服务体系建设的现状、挑战与发展策略研究[J].健康发展与政策研究,2026,29(01):143-148.
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- script -->
+    <!--等待时长-->
+    <script>
+    (function() {
+        var dom = document.getElementById('rose-chart-direct');
+        if (!dom) return;
+        var myChart = echarts.init(dom, 'white');
+        var option = {
+            animation: true,
+            color: [
+                "#04328C", "#0A4A9E", "#1F6F99", "#3C88A6", "#298EAF",
+                "#3DA0C2", "#54AECF", "#70B9DA", "#90CDE2", "#64B8E8",
+                "#0C9AF2", "#13C9F2", "#4DD4F5", "#22F2F2", "#86F5F5"
+            ],
+            series: [{
+                type: "pie",
+                data: [
+                    {"name": "心脏病学-电生理学", "value": 6.06},
+                    {"name": "听力学-听力学评估", "value": 4.71},
+                    {"name": "尿动力学-压力与流量测定", "value": 4.54},
+                    {"name": "神经生理学-周围神经生理学", "value": 4.44},
+                    {"name": "呼吸生理学-睡眠研究", "value": 3.55},
+                    {"name": "心脏病学-超声心动图", "value": 3.54},
+                    {"name": "可屈性乙状结肠镜检查", "value": 3.39},
+                    {"name": "膀胱镜检查", "value": 3.18},
+                    {"name": "结肠镜检查", "value": 2.98},
+                    {"name": "胃镜检查", "value": 2.95},
+                    {"name": "非产科超声", "value": 2.77},
+                    {"name": "双能X线吸收测定法", "value": 2.73},
+                    {"name": "磁共振成像", "value": 2.64},
+                    {"name": "钡剂灌肠造影", "value": 2.48},
+                    {"name": "计算机断层扫描", "value": 1.83}
+                ],
+                radius: ["0%", "70%"],
+                center: ["60%", "50%"],
+                roseType: "radius",
+                label: {
+                    show: true,
+                    position: "outside",
+                    color: "#298EAF",
+                    fontSize: 11,
+                    fontWeight: "bold",
+                    triggerEvent: true,
+                    formatter: function(params) {
+                        const name = params.name;
+                        const val = params.value + ' 周';
+                        // 逐个独立自定义换行
+                        if (name === "听力学-听力学评估") {
+                            // 示例：听力学
+                            //       听力学评估
+                            return "听力学-听力学\n评估:" + val;
+                        } else if (name === "尿动力学-压力与流量测定") {
+                            // 示例：尿动力学-压力
+                            //       与流量测定
+                            return "尿动力学-压力与\n流量测定:" + val;
+                        } else if (name === "神经生理学-周围神经生理学") {
+                            // 示例：神经生理学
+                            //       -周围神经生理学
+                            return "神经生理学-周围神经\n生理学:" + val;
+                        } else {
+                            // 其余短名称保持单行
+                            return name + ':' + val;
+                        }
+                    }
+                },
+                labelLine: {
+                    show: true,
+                    length: 6,
+                    length2: 16,
+                    lineStyle: {
+                        color: "#298EAF"
+                    },
+                    triggerEvent: true
+                },
+                itemStyle: {
+                    borderWidth: 1,
+                    borderColor: "#fff"
+                }
+            }],
+            legend: {
+                show: true,
+                orient: "vertical",
+                left: "0%",
+                top: "center",
+                itemGap: 8,
+                textStyle: { fontSize: 9 }
+            },
+            graphic: [
+                {
+                    type: "circle",
+                    shape: { cx: 480, cy: 280, r: 139 },
+                    style: { fill: "rgba(0,0,0,0)", stroke: "red", lineWidth: 2, lineDash: [5, 5] },
+                    z: 100
+                },
+                {
+                    type: "text",
+                    left: 630,
+                    top: 255,
+                    style: { text: "1个月≈4.29周", fill: "red", fontSize: 11 },
+                    z: 100
+                }
+            ]
+        };
+        myChart.setOption(option);
+        window.addEventListener('resize', function() { myChart.resize(); });
+    })();
+    </script>
+    <!--重点推广城市-->
+    <script>
+        function scrollAnimate() {
+            const box = document.querySelector('.rectangle');
+            const boxRect = box.getBoundingClientRect();
+            // 元素顶部距离视口底部120px时触发浮现动画
+            const triggerHeight = window.innerHeight - 110;
+            if (boxRect.top < triggerHeight) {
+                box.classList.add('show-box');
+            }
+        }
+        window.addEventListener('scroll', scrollAnimate);
+        window.addEventListener('load', scrollAnimate);
+    </script>
+    <script>
+        function scrollAnimate() {
+            const box = document.querySelector('.rectangle2');
+            const boxRect = box.getBoundingClientRect();
+            // 元素顶部距离视口底部120px时触发浮现动画
+            const triggerHeight = window.innerHeight - 110;
+            if (boxRect.top < triggerHeight) {
+                box.classList.add('show-box');
+            }
+        }
+        window.addEventListener('scroll', scrollAnimate);
+        window.addEventListener('load', scrollAnimate);
+    </script>
+    <script>
+        function scrollAnimate() {
+            const box = document.querySelector('.rectangle3');
+            const boxRect = box.getBoundingClientRect();
+            // 元素顶部距离视口底部120px时触发浮现动画
+            const triggerHeight = window.innerHeight - 110;
+            if (boxRect.top < triggerHeight) {
+                box.classList.add('show-box');
+            }
+        }
+        window.addEventListener('scroll', scrollAnimate);
+        window.addEventListener('load', scrollAnimate);
+    </script>
+
+    <!-- 加载页 -->
+    <script>
+        // 模拟加载延迟
+        setTimeout(function() {
+            // 隐藏加载页
+            document.querySelector('.loading-container').style.display = 'none';
+            // 显示内容
+            document.querySelector('.allcontent').style.display = 'block';
+        }, 1500); // 这里的3000表示加载延迟时间，单位为毫秒
+            // 强制显示内容，确保内容显示
+            document.addEventListener("DOMContentLoaded", function() {
+                document.querySelector('.allcontent').style.display = 'block';
+            });
+    </script>
+    
+    
+    <!-- 导航栏显示 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var navbar = document.getElementById("menu");
+            var navLinks = document.querySelectorAll('#menu .nav-link');
+    
+            window.onscroll = function() {
+                var scrollHeight = window.pageYOffset || document.documentElement.scrollTop;
+                var threshold = 980; // 设置滚动高度的阈值，根据需要调整
+    
+                if (scrollHeight > threshold) {
+                    navbar.classList.remove("navbar-hidden");
+                } else {
+                    navbar.classList.add("navbar-hidden");
+                }    
+
+            };
+
+        });
+    </script>
+    
+    <!-- 打字机动画 -->
+    <script>
+        // 获取引言文字元素
+        const introText1 = document.getElementById('introText1');
+
+        // 检测元素是否在视口中
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // 检测滚动事件
+        window.addEventListener('scroll', function () {
+            if (isElementInViewport(introText1)) {
+                // 隐藏光标
+                introText1.style.borderRight = 'none';
+                // 调用打字机效果函数
+                typeWriter(introText1);
+                // 移除滚动事件监听，确保效果只触发一次
+                window.removeEventListener('scroll', arguments.callee);
+            }
+        });
+
+        function typeWriter(element, callback) {
+            const text = element.innerHTML.trim(); // 使用 trim() 去除两端空白字符
+            element.innerHTML = '';
+            let i = 0;
+
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 60);
+                } else {
+                    // 执行回调函数
+                    if (typeof callback === 'function') {
+                        callback();
+                    }
+                }
+            }
+
+            type();
+        }
+    </script>
+
+    </body>
+    </html>
+    
+
